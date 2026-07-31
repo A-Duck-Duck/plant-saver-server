@@ -1,0 +1,5 @@
+0 Healthy Plants
+1 Pest Damage
+2 Sunburn
+3 Underwatered
+4 Overwatered
