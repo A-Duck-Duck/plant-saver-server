@@ -8,6 +8,14 @@ Drop your exported files into a `model/` folder next to this file:
 """
 
 import os
+
+# Teachable Machine exports models using the older Keras 2 format. TensorFlow
+# 2.16+ ships a newer, stricter Keras 3 by default that can't deserialize some
+# older layer configs (like DepthwiseConv2D's legacy 'groups' setting). Setting
+# this BEFORE importing tensorflow tells it to use the legacy-compatible Keras
+# implementation instead, which understands the old format correctly.
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
 import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
